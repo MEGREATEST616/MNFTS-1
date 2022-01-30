@@ -1,0 +1,1391 @@
+2022-01-28 16:23:19,739 - INFO - _internal.py - _log - 225 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-01-28 16:24:16,379 - INFO - _internal.py - _log - 225 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-01-28 16:24:26,963 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:24:26] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2022-01-28 16:24:26,978 - ERROR - _internal.py - _log - 225 - Error on request:
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: comments
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/views.py", line 12, in index
+    comments = Comment.query.order_by(Comment.timestamp.desc()).all()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 2759, in all
+    return self._iter().all()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 2894, in _iter
+    result = self.session.execute(
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1692, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1614, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 325, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1481, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1845, in _execute_context
+    self._handle_dbapi_exception(
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2026, in _handle_dbapi_exception
+    util.raise_(
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1802, in _execute_context
+    self.dialect.do_execute(
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: comments
+[SQL: SELECT comments.id AS comments_id, comments.body AS comments_body, comments.timestamp AS comments_timestamp, comments.author_id AS comments_author_id, comments.movie_id AS comments_movie_id 
+FROM comments ORDER BY comments.timestamp DESC]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 10, in internal_server_error
+    return render_template('500.html'), 500
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2022-01-28 16:33:00,501 - INFO - _internal.py - _log - 225 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-01-28 16:33:02,453 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "GET / HTTP/1.1" 200 -
+2022-01-28 16:33:02,502 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+2022-01-28 16:33:02,508 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "GET /static/css/style.css HTTP/1.1" 200 -
+2022-01-28 16:33:02,545 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "[35m[1mGET /js/public.js HTTP/1.1[0m" 500 -
+2022-01-28 16:33:02,574 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "[35m[1mGET /js/jquery.min.js HTTP/1.1[0m" 500 -
+2022-01-28 16:33:02,608 - ERROR - _internal.py - _log - 225 - Error on request:
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1492, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1474, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 2041, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1386, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1326, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 6, in page_not_found
+    return render_template('4040.html'), 404
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 4040.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 10, in internal_server_error
+    return render_template('500.html'), 500
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2022-01-28 16:33:02,612 - ERROR - _internal.py - _log - 225 - Error on request:
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1492, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1474, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 2041, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1386, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1326, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 6, in page_not_found
+    return render_template('4040.html'), 404
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 4040.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 10, in internal_server_error
+    return render_template('500.html'), 500
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2022-01-28 16:33:02,621 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "[35m[1mGET /js/public.js HTTP/1.1[0m" 500 -
+2022-01-28 16:33:02,623 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "[35m[1mGET /images/logo.png HTTP/1.1[0m" 500 -
+2022-01-28 16:33:02,624 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "[35m[1mGET /images/user.png HTTP/1.1[0m" 500 -
+2022-01-28 16:33:02,692 - ERROR - _internal.py - _log - 225 - Error on request:
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1492, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1474, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 2041, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1386, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1326, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 6, in page_not_found
+    return render_template('4040.html'), 404
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 4040.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 10, in internal_server_error
+    return render_template('500.html'), 500
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2022-01-28 16:33:02,698 - ERROR - _internal.py - _log - 225 - Error on request:
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1492, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1474, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 2041, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1386, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1326, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 6, in page_not_found
+    return render_template('4040.html'), 404
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 4040.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 10, in internal_server_error
+    return render_template('500.html'), 500
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2022-01-28 16:33:02,704 - ERROR - _internal.py - _log - 225 - Error on request:
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1492, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1474, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 2041, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1386, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1326, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 6, in page_not_found
+    return render_template('4040.html'), 404
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 4040.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 10, in internal_server_error
+    return render_template('500.html'), 500
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2022-01-28 16:33:02,726 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "[35m[1mGET /images/wechat.png HTTP/1.1[0m" 500 -
+2022-01-28 16:33:02,727 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "[35m[1mGET /images/qr1.jpg HTTP/1.1[0m" 500 -
+2022-01-28 16:33:02,735 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "[35m[1mGET /images/mail.png HTTP/1.1[0m" 500 -
+2022-01-28 16:33:02,739 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "[35m[1mGET /images/weibo.png HTTP/1.1[0m" 500 -
+2022-01-28 16:33:02,749 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "[35m[1mGET /app/static/images/search.png HTTP/1.1[0m" 500 -
+2022-01-28 16:33:02,753 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "[35m[1mGET /images/bottom-logo.png HTTP/1.1[0m" 500 -
+2022-01-28 16:33:02,809 - ERROR - _internal.py - _log - 225 - Error on request:
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1492, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1474, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 2041, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1386, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1326, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 6, in page_not_found
+    return render_template('4040.html'), 404
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 4040.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 10, in internal_server_error
+    return render_template('500.html'), 500
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2022-01-28 16:33:02,810 - ERROR - _internal.py - _log - 225 - Error on request:
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1492, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1474, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 2041, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1386, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1326, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 6, in page_not_found
+    return render_template('4040.html'), 404
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 4040.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 10, in internal_server_error
+    return render_template('500.html'), 500
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2022-01-28 16:33:02,811 - ERROR - _internal.py - _log - 225 - Error on request:
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1492, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1474, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 2041, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1386, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1326, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 6, in page_not_found
+    return render_template('4040.html'), 404
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 4040.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 10, in internal_server_error
+    return render_template('500.html'), 500
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2022-01-28 16:33:02,811 - ERROR - _internal.py - _log - 225 - Error on request:
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1492, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1474, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 2041, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1386, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1326, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 6, in page_not_found
+    return render_template('4040.html'), 404
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 4040.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 10, in internal_server_error
+    return render_template('500.html'), 500
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2022-01-28 16:33:02,812 - ERROR - _internal.py - _log - 225 - Error on request:
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1492, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1474, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 2041, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1386, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1326, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 6, in page_not_found
+    return render_template('4040.html'), 404
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 4040.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 10, in internal_server_error
+    return render_template('500.html'), 500
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2022-01-28 16:33:02,814 - ERROR - _internal.py - _log - 225 - Error on request:
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1492, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1474, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 2041, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1386, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1326, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 6, in page_not_found
+    return render_template('4040.html'), 404
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 4040.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 10, in internal_server_error
+    return render_template('500.html'), 500
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2022-01-28 16:33:02,820 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "[35m[1mGET /app/staticatic/images/3.jpg HTTP/1.1[0m" 500 -
+2022-01-28 16:33:02,823 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "[35m[1mGET /app/staticatic/images/1.jpg HTTP/1.1[0m" 500 -
+2022-01-28 16:33:02,827 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:02] "[35m[1mGET /app/staticatic/images/2.jpg HTTP/1.1[0m" 500 -
+2022-01-28 16:33:02,848 - ERROR - _internal.py - _log - 225 - Error on request:
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1492, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1474, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 2041, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1386, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1326, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 6, in page_not_found
+    return render_template('4040.html'), 404
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 4040.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 10, in internal_server_error
+    return render_template('500.html'), 500
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2022-01-28 16:33:02,853 - ERROR - _internal.py - _log - 225 - Error on request:
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1492, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1474, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 2041, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1386, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1326, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 6, in page_not_found
+    return render_template('4040.html'), 404
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 4040.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 10, in internal_server_error
+    return render_template('500.html'), 500
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2022-01-28 16:33:02,853 - ERROR - _internal.py - _log - 225 - Error on request:
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1492, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1474, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 2041, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1386, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1326, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 6, in page_not_found
+    return render_template('4040.html'), 404
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 4040.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
+    execute(self.server.app)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
+    application_iter = app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/app.py", line 1440, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "/Users/mudi/PycharmProjects/MNFTS/app/main/errors.py", line 10, in internal_server_error
+    return render_template('500.html'), 500
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/mudi/PycharmProjects/MNFTS/venv/lib/python3.8/site-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: 500.html
+2022-01-28 16:33:47,611 - INFO - _internal.py - _log - 225 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-01-28 16:33:51,015 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "GET / HTTP/1.1" 200 -
+2022-01-28 16:33:51,041 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "[33mGET /js/jquery.min.js HTTP/1.1[0m" 404 -
+2022-01-28 16:33:51,043 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "[33mGET /js/public.js HTTP/1.1[0m" 404 -
+2022-01-28 16:33:51,046 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+2022-01-28 16:33:51,073 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "[33mGET /images/logo.png HTTP/1.1[0m" 404 -
+2022-01-28 16:33:51,076 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "[33mGET /js/public.js HTTP/1.1[0m" 404 -
+2022-01-28 16:33:51,077 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "GET /static/css/style.css HTTP/1.1" 200 -
+2022-01-28 16:33:51,080 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "[33mGET /images/user.png HTTP/1.1[0m" 404 -
+2022-01-28 16:33:51,087 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "[33mGET /images/qr1.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:33:51,091 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "[33mGET /images/mail.png HTTP/1.1[0m" 404 -
+2022-01-28 16:33:51,091 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "[33mGET /images/wechat.png HTTP/1.1[0m" 404 -
+2022-01-28 16:33:51,095 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "[33mGET /images/weibo.png HTTP/1.1[0m" 404 -
+2022-01-28 16:33:51,097 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "[33mGET /images/bottom-logo.png HTTP/1.1[0m" 404 -
+2022-01-28 16:33:51,100 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "[33mGET /app/static/images/search.png HTTP/1.1[0m" 404 -
+2022-01-28 16:33:51,102 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "[33mGET /app/staticatic/images/1.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:33:51,104 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "[33mGET /app/staticatic/images/2.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:33:51,107 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:33:51] "[33mGET /app/staticatic/images/3.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:38:40,286 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "GET / HTTP/1.1" 200 -
+2022-01-28 16:38:40,321 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "[33mGET /js/jquery.min.js HTTP/1.1[0m" 404 -
+2022-01-28 16:38:40,328 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "[33mGET /js/public.js HTTP/1.1[0m" 404 -
+2022-01-28 16:38:40,332 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+2022-01-28 16:38:40,346 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "GET /static/css/style.css HTTP/1.1" 200 -
+2022-01-28 16:38:40,350 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "[33mGET /images/logo.png HTTP/1.1[0m" 404 -
+2022-01-28 16:38:40,355 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "[33mGET /js/public.js HTTP/1.1[0m" 404 -
+2022-01-28 16:38:40,359 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "[33mGET /images/user.png HTTP/1.1[0m" 404 -
+2022-01-28 16:38:40,362 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "[33mGET /images/qr1.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:38:40,373 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "[33mGET /images/wechat.png HTTP/1.1[0m" 404 -
+2022-01-28 16:38:40,374 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "[33mGET /images/mail.png HTTP/1.1[0m" 404 -
+2022-01-28 16:38:40,377 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "[33mGET /images/weibo.png HTTP/1.1[0m" 404 -
+2022-01-28 16:38:40,381 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "[33mGET /images/bottom-logo.png HTTP/1.1[0m" 404 -
+2022-01-28 16:38:40,385 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "[33mGET /app/static/images/search.png HTTP/1.1[0m" 404 -
+2022-01-28 16:38:40,388 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "[33mGET /app/staticatic/images/1.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:38:40,391 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "[33mGET /app/staticatic/images/2.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:38:40,393 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:38:40] "[33mGET /app/staticatic/images/3.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:39:14,438 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:14] "[36mGET /static/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+2022-01-28 16:39:14,494 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:14] "GET /static/css/style.css HTTP/1.1" 200 -
+2022-01-28 16:39:14,573 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:14] "GET /static/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 200 -
+2022-01-28 16:39:42,227 - INFO - _internal.py - _log - 225 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-01-28 16:39:43,637 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "GET / HTTP/1.1" 200 -
+2022-01-28 16:39:43,667 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "[33mGET /js/jquery.min.js HTTP/1.1[0m" 404 -
+2022-01-28 16:39:43,673 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "[33mGET /js/public.js HTTP/1.1[0m" 404 -
+2022-01-28 16:39:43,680 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+2022-01-28 16:39:43,737 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "[33mGET /images/logo.png HTTP/1.1[0m" 404 -
+2022-01-28 16:39:43,737 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "GET /static/css/style.css HTTP/1.1" 200 -
+2022-01-28 16:39:43,740 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "[33mGET /js/public.js HTTP/1.1[0m" 404 -
+2022-01-28 16:39:43,749 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "GET /static/images/user.png HTTP/1.1" 200 -
+2022-01-28 16:39:43,757 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "[33mGET /images/qr1.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:39:43,762 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "[33mGET /images/wechat.png HTTP/1.1[0m" 404 -
+2022-01-28 16:39:43,765 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "[33mGET /images/mail.png HTTP/1.1[0m" 404 -
+2022-01-28 16:39:43,770 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "[33mGET /images/weibo.png HTTP/1.1[0m" 404 -
+2022-01-28 16:39:43,774 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "[33mGET /images/bottom-logo.png HTTP/1.1[0m" 404 -
+2022-01-28 16:39:43,778 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "[33mGET /app/static/images/search.png HTTP/1.1[0m" 404 -
+2022-01-28 16:39:43,782 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "[33mGET /app/staticatic/images/1.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:39:43,785 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "[33mGET /app/staticatic/images/2.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:39:43,787 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "[33mGET /app/staticatic/images/3.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:39:43,792 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:43] "GET /static/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 200 -
+2022-01-28 16:39:50,064 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:39:50] "[35m[1mGET /auth/login HTTP/1.1[0m" 500 -
+2022-01-28 16:41:33,289 - INFO - _internal.py - _log - 225 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-01-28 16:41:35,425 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:41:35] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:41:35,459 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:41:35] "[33mGET /static/login.js HTTP/1.1[0m" 404 -
+2022-01-28 16:41:35,462 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:41:35] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:41:36,467 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:41:36] "[33mGET /static/login.js HTTP/1.1[0m" 404 -
+2022-01-28 16:41:36,476 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:41:36] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:43:47,306 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:47] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:43:47,332 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:47] "[33mGET /static/login.js HTTP/1.1[0m" 404 -
+2022-01-28 16:43:47,335 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:47] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:43:48,083 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:43:48,105 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "[33mGET /static/login.js HTTP/1.1[0m" 404 -
+2022-01-28 16:43:48,108 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:43:48,133 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:43:48,267 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:43:48,289 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "[33mGET /static/login.js HTTP/1.1[0m" 404 -
+2022-01-28 16:43:48,292 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:43:48,318 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:43:48,443 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:43:48,464 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "[33mGET /static/login.js HTTP/1.1[0m" 404 -
+2022-01-28 16:43:48,467 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:43:48,490 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:43:48,607 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:43:48,628 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "[33mGET /static/login.js HTTP/1.1[0m" 404 -
+2022-01-28 16:43:48,630 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:43:48,655 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:43:48,777 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:43:48,799 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "[33mGET /static/login.js HTTP/1.1[0m" 404 -
+2022-01-28 16:43:48,801 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:43:48,824 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:48] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:43:51,126 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:43:51] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:44:19,064 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:44:19] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:44:19,092 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:44:19] "[33mGET /static/login.js HTTP/1.1[0m" 404 -
+2022-01-28 16:44:19,096 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:44:19] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:44:19,203 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:44:19] "[33mGET /static/login.js HTTP/1.1[0m" 404 -
+2022-01-28 16:44:19,213 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:44:19] "[33mGET /static/login.css HTTP/1.1[0m" 404 -
+2022-01-28 16:44:34,995 - INFO - _internal.py - _log - 225 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-01-28 16:44:35,405 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:44:35] "[35m[1mGET /auth/login HTTP/1.1[0m" 500 -
+2022-01-28 16:45:13,552 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:45:13] "[35m[1mGET /auth/login HTTP/1.1[0m" 500 -
+2022-01-28 16:45:17,584 - INFO - _internal.py - _log - 225 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-01-28 16:45:18,887 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:45:18] "[35m[1mGET /auth/login HTTP/1.1[0m" 500 -
+2022-01-28 16:47:20,205 - INFO - _internal.py - _log - 225 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-01-28 16:47:25,774 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:25] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:47:25,805 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:25] "GET /static/js/login.js HTTP/1.1" 200 -
+2022-01-28 16:47:25,810 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:25] "GET /static/css/login.css HTTP/1.1" 200 -
+2022-01-28 16:47:41,685 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "GET / HTTP/1.1" 200 -
+2022-01-28 16:47:41,712 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "[33mGET /js/jquery.min.js HTTP/1.1[0m" 404 -
+2022-01-28 16:47:41,716 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "[33mGET /js/public.js HTTP/1.1[0m" 404 -
+2022-01-28 16:47:41,718 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+2022-01-28 16:47:41,766 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "[33mGET /images/logo.png HTTP/1.1[0m" 404 -
+2022-01-28 16:47:41,768 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "GET /static/css/style.css HTTP/1.1" 200 -
+2022-01-28 16:47:41,782 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "[33mGET /images/mail.png HTTP/1.1[0m" 404 -
+2022-01-28 16:47:41,783 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "[33mGET /images/wechat.png HTTP/1.1[0m" 404 -
+2022-01-28 16:47:41,783 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "[33mGET /images/qr1.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:47:41,786 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "GET /static/images/user.png HTTP/1.1" 200 -
+2022-01-28 16:47:41,788 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "[33mGET /images/weibo.png HTTP/1.1[0m" 404 -
+2022-01-28 16:47:41,792 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "[33mGET /images/bottom-logo.png HTTP/1.1[0m" 404 -
+2022-01-28 16:47:41,794 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "[33mGET /app/static/images/search.png HTTP/1.1[0m" 404 -
+2022-01-28 16:47:41,796 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "[33mGET /app/staticatic/images/1.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:47:41,799 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "[33mGET /app/staticatic/images/2.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:47:41,801 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:41] "[33mGET /app/staticatic/images/3.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:47:43,050 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:43] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:47:43,080 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:43] "GET /static/js/login.js HTTP/1.1" 200 -
+2022-01-28 16:47:43,084 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:43] "GET /static/css/login.css HTTP/1.1" 200 -
+2022-01-28 16:47:46,582 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:46] "GET / HTTP/1.1" 200 -
+2022-01-28 16:47:46,603 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:46] "[33mGET /js/jquery.min.js HTTP/1.1[0m" 404 -
+2022-01-28 16:47:46,606 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:46] "[33mGET /js/public.js HTTP/1.1[0m" 404 -
+2022-01-28 16:47:46,624 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:46] "[33mGET /images/logo.png HTTP/1.1[0m" 404 -
+2022-01-28 16:47:46,627 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:46] "[33mGET /images/qr1.jpg HTTP/1.1[0m" 404 -
+2022-01-28 16:47:46,637 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:46] "[33mGET /images/wechat.png HTTP/1.1[0m" 404 -
+2022-01-28 16:47:46,638 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:46] "[33mGET /images/bottom-logo.png HTTP/1.1[0m" 404 -
+2022-01-28 16:47:46,639 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:46] "[33mGET /images/weibo.png HTTP/1.1[0m" 404 -
+2022-01-28 16:47:46,642 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:47:46] "[33mGET /images/mail.png HTTP/1.1[0m" 404 -
+2022-01-28 16:54:31,778 - INFO - _internal.py - _log - 225 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-01-28 16:54:45,972 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:45] "GET / HTTP/1.1" 200 -
+2022-01-28 16:54:46,016 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/js/jquery.min.js HTTP/1.1" 200 -
+2022-01-28 16:54:46,021 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/js/public.js HTTP/1.1" 200 -
+2022-01-28 16:54:46,025 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/images/logo.png HTTP/1.1" 200 -
+2022-01-28 16:54:46,028 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+2022-01-28 16:54:46,029 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/css/style.css HTTP/1.1" 200 -
+2022-01-28 16:54:46,030 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/images/user.png HTTP/1.1" 200 -
+2022-01-28 16:54:46,034 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/images/1.jpg HTTP/1.1" 200 -
+2022-01-28 16:54:46,042 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/images/2.jpg HTTP/1.1" 200 -
+2022-01-28 16:54:46,046 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/images/3.jpg HTTP/1.1" 200 -
+2022-01-28 16:54:46,047 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/images/qr1.jpg HTTP/1.1" 200 -
+2022-01-28 16:54:46,049 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/images/wechat.png HTTP/1.1" 200 -
+2022-01-28 16:54:46,051 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/images/mail.png HTTP/1.1" 200 -
+2022-01-28 16:54:46,052 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/images/weibo.png HTTP/1.1" 200 -
+2022-01-28 16:54:46,055 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/images/bottom-logo.png HTTP/1.1" 200 -
+2022-01-28 16:54:46,155 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET / HTTP/1.1" 200 -
+2022-01-28 16:54:46,220 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/js/jquery.min.js HTTP/1.1" 200 -
+2022-01-28 16:54:46,230 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+2022-01-28 16:54:46,231 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/js/public.js HTTP/1.1" 200 -
+2022-01-28 16:54:46,232 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/css/style.css HTTP/1.1" 200 -
+2022-01-28 16:54:46,310 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/images/logo.png HTTP/1.1" 200 -
+2022-01-28 16:54:46,311 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "GET /static/images/user.png HTTP/1.1" 200 -
+2022-01-28 16:54:46,333 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:46] "[33mGET /app/static/images/search.png HTTP/1.1[0m" 404 -
+2022-01-28 16:54:55,627 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:55] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:54:55,656 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:55] "GET /static/css/login.css HTTP/1.1" 200 -
+2022-01-28 16:54:55,658 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:55] "GET /static/js/login.js HTTP/1.1" 200 -
+2022-01-28 16:54:57,117 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:57] "GET / HTTP/1.1" 200 -
+2022-01-28 16:54:57,142 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:57] "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+2022-01-28 16:54:57,143 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:57] "GET /static/css/style.css HTTP/1.1" 200 -
+2022-01-28 16:54:57,175 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:54:57] "[33mGET /app/static/images/search.png HTTP/1.1[0m" 404 -
+2022-01-28 16:55:37,574 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "GET / HTTP/1.1" 200 -
+2022-01-28 16:55:37,609 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "[36mGET /static/js/jquery.min.js HTTP/1.1[0m" 304 -
+2022-01-28 16:55:37,612 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+2022-01-28 16:55:37,615 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "GET /static/css/style.css HTTP/1.1" 200 -
+2022-01-28 16:55:37,617 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "[36mGET /static/js/public.js HTTP/1.1[0m" 304 -
+2022-01-28 16:55:37,666 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2022-01-28 16:55:37,668 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "[36mGET /static/images/user.png HTTP/1.1[0m" 304 -
+2022-01-28 16:55:37,681 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "[36mGET /static/images/2.jpg HTTP/1.1[0m" 304 -
+2022-01-28 16:55:37,684 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "[36mGET /static/images/3.jpg HTTP/1.1[0m" 304 -
+2022-01-28 16:55:37,685 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "[36mGET /static/images/wechat.png HTTP/1.1[0m" 304 -
+2022-01-28 16:55:37,686 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "[36mGET /static/images/qr1.jpg HTTP/1.1[0m" 304 -
+2022-01-28 16:55:37,688 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "[36mGET /static/images/1.jpg HTTP/1.1[0m" 304 -
+2022-01-28 16:55:37,692 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "[36mGET /static/images/mail.png HTTP/1.1[0m" 304 -
+2022-01-28 16:55:37,694 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "[33mGET /static/css/images/search.png HTTP/1.1[0m" 404 -
+2022-01-28 16:55:37,699 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "[36mGET /static/images/bottom-logo.png HTTP/1.1[0m" 304 -
+2022-01-28 16:55:37,701 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:37] "[36mGET /static/images/weibo.png HTTP/1.1[0m" 304 -
+2022-01-28 16:55:46,355 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:46] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:55:46,384 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:46] "GET /static/js/login.js HTTP/1.1" 200 -
+2022-01-28 16:55:46,386 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:46] "GET /static/css/login.css HTTP/1.1" 200 -
+2022-01-28 16:55:47,699 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:47] "GET / HTTP/1.1" 200 -
+2022-01-28 16:55:47,725 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:47] "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+2022-01-28 16:55:47,726 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:47] "GET /static/css/style.css HTTP/1.1" 200 -
+2022-01-28 16:55:47,769 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:55:47] "[33mGET /static/css/images/search.png HTTP/1.1[0m" 404 -
+2022-01-28 16:56:21,255 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:56:21] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:56:21,298 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:56:21] "GET /static/css/login.css HTTP/1.1" 200 -
+2022-01-28 16:56:21,299 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:56:21] "GET /static/js/login.js HTTP/1.1" 200 -
+2022-01-28 16:57:44,990 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:44] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:57:45,025 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:45] "[36mGET /static/js/login.js HTTP/1.1[0m" 304 -
+2022-01-28 16:57:45,028 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:45] "GET /static/css/login.css HTTP/1.1" 200 -
+2022-01-28 16:57:50,425 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:50] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:57:50,451 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:50] "[36mGET /static/js/login.js HTTP/1.1[0m" 304 -
+2022-01-28 16:57:50,452 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:50] "[36mGET /static/css/login.css HTTP/1.1[0m" 304 -
+2022-01-28 16:57:51,873 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "GET / HTTP/1.1" 200 -
+2022-01-28 16:57:51,899 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "GET /static/js/jquery.min.js HTTP/1.1" 200 -
+2022-01-28 16:57:51,905 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "GET /static/js/public.js HTTP/1.1" 200 -
+2022-01-28 16:57:51,905 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+2022-01-28 16:57:51,907 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "GET /static/css/style.css HTTP/1.1" 200 -
+2022-01-28 16:57:51,934 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "GET /static/images/user.png HTTP/1.1" 200 -
+2022-01-28 16:57:51,934 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "GET /static/images/logo.png HTTP/1.1" 200 -
+2022-01-28 16:57:51,943 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "GET /static/images/2.jpg HTTP/1.1" 200 -
+2022-01-28 16:57:51,944 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "GET /static/images/1.jpg HTTP/1.1" 200 -
+2022-01-28 16:57:51,952 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "GET /static/images/3.jpg HTTP/1.1" 200 -
+2022-01-28 16:57:51,956 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "GET /static/images/qr1.jpg HTTP/1.1" 200 -
+2022-01-28 16:57:51,959 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "GET /static/images/wechat.png HTTP/1.1" 200 -
+2022-01-28 16:57:51,960 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "GET /static/images/mail.png HTTP/1.1" 200 -
+2022-01-28 16:57:51,964 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "GET /static/images/weibo.png HTTP/1.1" 200 -
+2022-01-28 16:57:51,966 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "[33mGET /static/css/images/search.png HTTP/1.1[0m" 404 -
+2022-01-28 16:57:51,968 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:51] "GET /static/images/bottom-logo.png HTTP/1.1" 200 -
+2022-01-28 16:57:53,081 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:53] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:57:53,109 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:53] "[36mGET /static/js/login.js HTTP/1.1[0m" 304 -
+2022-01-28 16:57:53,110 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:53] "[36mGET /static/css/login.css HTTP/1.1[0m" 304 -
+2022-01-28 16:57:57,819 - INFO - _internal.py - _log - 225 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-01-28 16:57:58,151 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:58] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:57:58,175 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:58] "[36mGET /static/js/login.js HTTP/1.1[0m" 304 -
+2022-01-28 16:57:58,177 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:57:58] "[36mGET /static/css/login.css HTTP/1.1[0m" 304 -
+2022-01-28 16:58:13,175 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:13] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:58:13,202 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:13] "[36mGET /static/js/login.js HTTP/1.1[0m" 304 -
+2022-01-28 16:58:13,205 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:13] "[36mGET /static/css/login.css HTTP/1.1[0m" 304 -
+2022-01-28 16:58:13,916 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:13] "GET / HTTP/1.1" 200 -
+2022-01-28 16:58:13,942 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:13] "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+2022-01-28 16:58:13,942 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:13] "GET /static/js/jquery.min.js HTTP/1.1" 200 -
+2022-01-28 16:58:13,946 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:13] "GET /static/js/public.js HTTP/1.1" 200 -
+2022-01-28 16:58:13,948 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:13] "GET /static/css/style.css HTTP/1.1" 200 -
+2022-01-28 16:58:13,975 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:13] "GET /static/images/logo.png HTTP/1.1" 200 -
+2022-01-28 16:58:13,976 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:13] "GET /static/images/user.png HTTP/1.1" 200 -
+2022-01-28 16:58:13,987 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:13] "GET /static/images/1.jpg HTTP/1.1" 200 -
+2022-01-28 16:58:13,989 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:13] "GET /static/images/2.jpg HTTP/1.1" 200 -
+2022-01-28 16:58:13,997 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:13] "GET /static/images/3.jpg HTTP/1.1" 200 -
+2022-01-28 16:58:14,000 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:14] "GET /static/images/wechat.png HTTP/1.1" 200 -
+2022-01-28 16:58:14,000 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:14] "GET /static/images/qr1.jpg HTTP/1.1" 200 -
+2022-01-28 16:58:14,002 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:14] "GET /static/images/mail.png HTTP/1.1" 200 -
+2022-01-28 16:58:14,007 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:14] "GET /static/images/weibo.png HTTP/1.1" 200 -
+2022-01-28 16:58:14,011 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:14] "[33mGET /static/css/images/search.png HTTP/1.1[0m" 404 -
+2022-01-28 16:58:14,011 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:14] "GET /static/images/bottom-logo.png HTTP/1.1" 200 -
+2022-01-28 16:58:18,339 - INFO - _internal.py - _log - 225 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-01-28 16:58:18,680 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:18] "GET / HTTP/1.1" 200 -
+2022-01-28 16:58:18,730 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:18] "[36mGET /static/js/jquery.min.js HTTP/1.1[0m" 304 -
+2022-01-28 16:58:18,735 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:18] "[36mGET /static/bootstrap/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+2022-01-28 16:58:18,736 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2022-01-28 16:58:18,738 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:18] "[36mGET /static/js/public.js HTTP/1.1[0m" 304 -
+2022-01-28 16:58:18,764 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:18] "[36mGET /static/images/user.png HTTP/1.1[0m" 304 -
+2022-01-28 16:58:18,764 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:18] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2022-01-28 16:58:18,774 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:18] "[36mGET /static/images/1.jpg HTTP/1.1[0m" 304 -
+2022-01-28 16:58:18,776 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:18] "[36mGET /static/images/2.jpg HTTP/1.1[0m" 304 -
+2022-01-28 16:58:18,777 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:18] "[36mGET /static/images/3.jpg HTTP/1.1[0m" 304 -
+2022-01-28 16:58:18,779 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:18] "[36mGET /static/images/qr1.jpg HTTP/1.1[0m" 304 -
+2022-01-28 16:58:18,781 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:18] "[36mGET /static/images/wechat.png HTTP/1.1[0m" 304 -
+2022-01-28 16:58:18,789 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:18] "[36mGET /static/images/mail.png HTTP/1.1[0m" 304 -
+2022-01-28 16:58:18,790 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:18] "[36mGET /static/images/bottom-logo.png HTTP/1.1[0m" 304 -
+2022-01-28 16:58:18,791 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:18] "[36mGET /static/images/weibo.png HTTP/1.1[0m" 304 -
+2022-01-28 16:58:19,913 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:19] "GET /auth/login HTTP/1.1" 200 -
+2022-01-28 16:58:19,937 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:19] "[36mGET /static/js/login.js HTTP/1.1[0m" 304 -
+2022-01-28 16:58:19,938 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:19] "[36mGET /static/css/login.css HTTP/1.1[0m" 304 -
+2022-01-28 16:58:30,020 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "GET / HTTP/1.1" 200 -
+2022-01-28 16:58:30,050 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "GET /static/js/jquery.min.js HTTP/1.1" 200 -
+2022-01-28 16:58:30,054 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "GET /static/js/public.js HTTP/1.1" 200 -
+2022-01-28 16:58:30,054 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "GET /static/css/style.css HTTP/1.1" 200 -
+2022-01-28 16:58:30,057 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "GET /static/bootstrap/css/bootstrap.min.css HTTP/1.1" 200 -
+2022-01-28 16:58:30,081 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "GET /static/images/logo.png HTTP/1.1" 200 -
+2022-01-28 16:58:30,085 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "GET /static/images/user.png HTTP/1.1" 200 -
+2022-01-28 16:58:30,093 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "GET /static/images/1.jpg HTTP/1.1" 200 -
+2022-01-28 16:58:30,094 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "GET /static/images/2.jpg HTTP/1.1" 200 -
+2022-01-28 16:58:30,104 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "GET /static/images/3.jpg HTTP/1.1" 200 -
+2022-01-28 16:58:30,107 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "GET /static/images/qr1.jpg HTTP/1.1" 200 -
+2022-01-28 16:58:30,109 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "GET /static/images/weibo.png HTTP/1.1" 200 -
+2022-01-28 16:58:30,112 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "GET /static/images/wechat.png HTTP/1.1" 200 -
+2022-01-28 16:58:30,114 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "GET /static/images/mail.png HTTP/1.1" 200 -
+2022-01-28 16:58:30,115 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "GET /static/images/bottom-logo.png HTTP/1.1" 200 -
+2022-01-28 16:58:30,120 - INFO - _internal.py - _log - 225 - 127.0.0.1 - - [28/Jan/2022 16:58:30] "[33mGET /static/css/images/search.png HTTP/1.1[0m" 404 -
