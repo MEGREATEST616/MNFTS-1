@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <!-- 引入bootstrap文件 -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/public.js"></script>
+    <script>
+        function getClass(className) { //className指class的值
+         
+                  var tagname = document.getElementsByTagName('*');  //获取指定元素
+                  var tagnameAll = [];     //这个数组用于存储所有符合条件的元素
+                  for (var i = 0; i < tagname.length; i++) {     //遍历获得的元素
+                      if (tagname[i].className.indexOf(className)>=0){     //如果获得的元素中的class的值等于指定的类名，就赋值给tagnameAll
+                          tagnameAll[tagnameAll.length] = tagname[i];
+                      }
+                  }
+                  return tagnameAll;
+               
+          }
+   
+   
+   
+          window.onload=function(){//载入事件
+              var btn=getClass('tab_btn');//获取按钮数组
+              var div=getClass('tab_div');//获取div数组
+              for(i=0;i<btn.length;i++){
+                  btn[i].onclick=function(){//按钮点击事件
+                      var index=(this.getAttribute('index')-0);//获取是第几个按钮按下
+                      if(btn[index].className.indexOf('curr_btn')>=0) return;//如果按下的按钮为当前选中的按钮则无反应
+                      for(i=0;i<btn.length;i++){
+                          if(index==i){
+                              btn[i].className='tab_btn curr_btn';
+                              div[i].className='tab_div curr_div';
+                          }else{
+                              btn[i].className='tab_btn';
+                              div[i].className='tab_div';
+                          }
+                      }
+                  }
+              }
+          };
+      </script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style1.css">
+    <title>USER</title>
+</head>
+<body>
+    <!-- 头部 -->
+    <div class="header w">
+        <!-- logo -->
+        <div class="logo">
+            <li><a href="#" target="_self"><img src="images/logo.png" alt="" ></a></li>
+        </div>
+        <!-- user -->
+        <div class="user">
+            <ul>
+                <li><a href="#" target="_self"><img src="images/user.png" alt=""></a></li>
+            </ul>
+        </div>
+        <div class="search">
+            <input type="text" value="search" placeholder="search">
+            <button type="submit"></button>
+        </div>
+        <!-- 导航栏 -->
+        <div class="nav">
+            <ul>
+              <li><a href="#">市场</a></li>
+              <li><a href="#">购物车</a></li>
+              <li><a href="#">资产</a></li>
+              <li><a href="#">上传</a></li>
+            </ul>
+        </div>
+        <div class="menu">
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+    </div>
+        <div class="carpet2">
+            <div class="user-banner">
+              个人中心<br><br>打造你NFT的秘密基地
+            </div>
+        </div>
+        <main class="user-main">
+            <div class="user-main1">
+                <a href='javascript:void(0)' index='0' class='tab_btn curr_btn'><li class="个人信息"><div><div class="user-detail"><img src="images/user-information1.png" alt=""><div class="dscrb">个人信息</div></div></div></li></a>
+                <a href='javascript:void(0)' index='1' class='tab_btn'><li class="我的喜欢"><div class="user-detail"><div><img src="images/user-like1.png" alt=""><div class="dscrb">我的喜欢</div></div></div></li></a>
+                <a href='javascript:void(0)' index='2' class='tab_btn'><li class="私人博物馆"><div class="user-detail"><div><img src="images/user-collect1.png" alt=""><div class="dscrb">私人博物馆</div></div></div></li></a>
+                <a href='javascript:void(0)' index='3' class='tab_btn'><li class="我的钱包"><div class="user-detail"><div><img src="images/user-wallet1.png" alt=""><div class="dscrb">我的钱包</div></div></div></li></a>
+            </div>
+            <div id='tab'>
+                <div class='tab_div curr_div'>
+                        <div class="user-main2-1">
+                            <h3 class="基本信息">基本信息</h3>
+                            <div class="information" >
+                                <li class="账户昵称" >账户昵称</li>
+                                <li class="账户ID" >账户 ID</li>
+                                <li class="手机号" >手机号</li>
+                            </div>
+                        </div>
+                </div>
+            <div class='tab_div'>
+                <div class="user-main2-2"><h3 class="loved">我的喜欢</h3>
+                </div>
+            </div>
+            <div class='tab_div'>
+            <div class="user-main2-3">
+                <ul>
+                <li class="全部">全部</li>
+                <li class="出售中">出售中</li>
+                <li class="未出售">未出售</li>
+                </ul>
+            </div>
+            </div>
+            <div class='tab_div'>
+                <div class="user-main2-4">
+                    绑定钱包
+                    </div>
+            </div>
+            </div>
+        </main>     
+</body>
+</html>
